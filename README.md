@@ -2,19 +2,26 @@
 
 This Laravel 11 application provides a robust registration and login system with OTP (One-Time Password) verification, enhancing security for user authentication. Leveraging the power of Laravel 11, PHP 8, and MySQL, this project ensures reliability, scalability, and performance for authentication needs.
 
-
+### Register Page 
 ![1 register](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/6d338385-dcc0-48ca-9c91-b0a4337646c2)
 
+### Registration with OTP 
 ![2 register with otp](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/13b07b4b-1836-4ded-afcc-aef5b5f88cda)
 
+### Change Password 
 ![3 change password](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/9e3a03ca-4f17-46d3-9b56-59a09a622a1a)
 
+### Login Page
 ![4 login](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/5544b26d-35e7-4474-9b37-55560c4c18ee)
 
+### Forget Password OTP generate
 ![5 forget password generate otp](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/a28ebc07-24fb-4959-940b-b6d3825913d0)
 
-![5 otp verification](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/781d2a6d-6c70-457c-a778-d07b3efb4a01)
+### Register OTP API Testing Postman
+![7 registration api testing postman](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/1ed805bb-9d7a-49c0-84b5-8707437ce369)
 
+### Login OTP API Testing Postman
+![8 login api testing postman](https://github.com/ShababSalehin/Laravel-11-login-with-otp-verification/assets/82288653/5aea8cfd-f8cd-4b69-9bff-c857095988cb)
 
 
 ## Table of Contents
