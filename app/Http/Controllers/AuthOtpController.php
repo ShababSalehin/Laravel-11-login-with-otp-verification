@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\VerificationCode;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthOtpController extends Controller
 {
@@ -27,7 +28,8 @@ class AuthOtpController extends Controller
         # Generate An OTP
         $verificationCode = $this->generateOtp($request->mobile_no);
 
-        $message = "Your OTP To Login is - " . $verificationCode->otp;
+        // $message = "Your OTP To Login is - " . $verificationCode->otp;
+        $message = "Enter your OTP to login";
 
         # Return With OTP as JSON if request expects JSON
         if ($request->expectsJson()) {
@@ -98,5 +100,26 @@ class AuthOtpController extends Controller
         }
 
         return redirect()->route('otp.login')->with('error', 'Your Otp is not correct');
+    }
+
+
+
+
+    public function registerWithOtp(Request $request)
+    {
+        // Validate OTP
+        $verificationCode = VerificationCode::find(Session::get('verification_code_id'));
+        if (!$verificationCode || $verificationCode->otp !== $request->otp) {
+            return redirect()->back()->with('error', 'Invalid OTP');
+        }
+
+        // Clear session data
+        Session::forget(['user_id', 'verification_code_id']);
+
+        // Proceed with user registration
+        $user = User::find(Session::get('user_id'));
+        Auth::login($user);
+
+        return redirect()->route('home');
     }
 }

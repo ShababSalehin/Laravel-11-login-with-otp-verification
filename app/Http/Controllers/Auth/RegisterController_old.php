@@ -4,30 +4,48 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\VerificationCode;
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
     use RegistersUsers;
 
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
     protected $redirectTo = '/home';
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    public function showRegistrationForm()
-    {
-        return view('auth.register');
-    }
-
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -38,6 +56,12 @@ class RegisterController extends Controller
         ]);
     }
 
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
     protected function create(array $data)
     {
         return User::create([
@@ -45,31 +69,6 @@ class RegisterController extends Controller
             'mobile_no' => $data['mobile_no'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
-    }
-
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        $user = $this->create($request->all());
-
-        // Generate OTP
-        $verificationCode = $this->generateOtp($user->mobile_no);
-
-        // Redirect to OTP verification form
-        return redirect()->route('otp.verification', ['user_id' => $user->id])->with('success', 'Registration successful. Please verify your mobile number.');
-    }
-
-    protected function generateOtp($mobile_no)
-    {
-        $user = User::where('mobile_no', $mobile_no)->first();
-
-        // Generate OTP
-        return VerificationCode::create([
-            'user_id' => $user->id,
-            'otp' => rand(123456, 999999),
-            'expired_at' => Carbon::now()->addMinutes(10)
         ]);
     }
 }

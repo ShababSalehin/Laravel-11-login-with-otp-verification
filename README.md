@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel 11 Login with OTP Verification
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This Laravel 11 application provides a robust registration and login system with OTP (One-Time Password) verification, enhancing security for user authentication. Leveraging the power of Laravel 11, PHP 8, and MySQL, this project ensures reliability, scalability, and performance for the authentication needs.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Stack](#stack)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Stack
 
-## Learning Laravel
+- **Backend:**
+  - Laravel 11
+  - PHP 8
+  - MySQL
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Frontend:**
+  - Bootstrap 5
+  - HTML 5
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **API Testing:**
+  - Postman
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Features
+- **Secure Authentication:** Utilizes OTP verification for both registration and login, enhancing security.
+- **Password Management:** Includes functionality for password reset and change password.
+- **Modern UI:** Utilizes Laravel UI for frontend components and Bootstrap 5 for a responsive and visually appealing interface.
+- **Scalable and Reliable:** Built on Laravel 11 and PHP 8, ensuring scalability and reliability for your authentication needs.
 
-## Laravel Sponsors
+## Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prerequisites
+Before you begin, ensure you have met the following requirements:
+- PHP >= 8.1
+- Composer
+- MySQL
+- Node.js & NPM
+- Git
 
-### Premium Partners
+### Step-by-Step Guide
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/shababsalehin/laravel-11-login-with-otp-verification.git
+    cd laravel-11-login-with-otp-verification
+    ```
+
+2. **Install dependencies:**
+    ```bash
+    composer install
+    npm install
+    npm run dev
+    ```
+
+3. **Set up the environment file:**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4. **Configure the database:**
+    Update the `.env` file with your database credentials:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=otp_verification
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+5. **Run migrations:**
+    ```bash
+    php artisan migrate
+    ```
+
+6. **Start the application:**
+    ```bash
+    php artisan serve
+    ```
+
+7. **Visit the application:**
+    Open your web browser and visit `http://127.0.0.1:8000/`.
+
+## Usage
+
+### Registration
+1. Go to the registration page.
+2. Fill in the registration form with your details.
+3. Submit the form to receive an OTP.
+4. Enter the OTP to complete the registration.
+
+### Login
+1. Go to the login page.
+2. Login with Email and Password.
+3. Clicking forget password will redirects in a page where user's registered mobile number is needed to generate otp.
+4. Enter the OTP to log in.
+
+### Change Password
+1. Log in to your account.
+2. Navigate to the "Change Password" section in the dashboard.
+3. Enter old password, then enter your current password and the new password.
+
+### API Testing with Postman
+API endpoints can be tested using Postman. Import the provided Postman collection and environment file for easy testing.
+
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Feel free to contribute to this project. Pull requests are welcome.
 
-## Code of Conduct
+## Contact
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+If you have any questions or suggestions, feel free to reach out:
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Email: auddhayashabab@gmail.com

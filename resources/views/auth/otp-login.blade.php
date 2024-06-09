@@ -41,7 +41,7 @@
 
                                 @if (Route::has('login'))
                                     <a class="btn btn-link" href="{{ route('login') }}">
-                                        {{ __('Login With Username') }}
+                                        {{ __('Login With Email') }}
                                     </a>
                                 @endif
                             </div>
