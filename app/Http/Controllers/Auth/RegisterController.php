@@ -57,7 +57,17 @@ class RegisterController extends Controller
         // Generate OTP
         $verificationCode = $this->generateOtp($user->mobile_no);
 
-        // Redirect to OTP verification form
+        // Check if the request expects a JSON response
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Registration successful. Please verify your mobile number.',
+                'user_id' => $user->id,
+                'otp' => $verificationCode->otp
+            ]);
+        }
+
+        // Redirect to OTP verification form if not expecting JSON
         return redirect()->route('otp.verification', ['user_id' => $user->id])->with('success', 'Registration successful. Please verify your mobile number.');
     }
 

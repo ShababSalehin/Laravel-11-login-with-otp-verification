@@ -28,12 +28,12 @@ class AuthOtpController extends Controller
         # Generate An OTP
         $verificationCode = $this->generateOtp($request->mobile_no);
 
-        // $message = "Your OTP To Login is - " . $verificationCode->otp;
+        //$message = "Your OTP To Login is - " . $verificationCode->otp;
         $message = "Enter your OTP to login";
 
-        # Return With OTP as JSON if request expects JSON
+         # Return With OTP as JSON if request expects JSON
         if ($request->expectsJson()) {
-            return response()->json(['success' => $message]);
+            return response()->json(['success' => $message, 'otp' => $verificationCode->otp]);
         }
 
         # Otherwise, redirect to the verification page
