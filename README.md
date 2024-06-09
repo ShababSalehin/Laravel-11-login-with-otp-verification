@@ -3,7 +3,6 @@
 This Laravel 11 application provides a robust registration and login system with OTP (One-Time Password) verification, enhancing security for user authentication. Leveraging the power of Laravel 11, PHP 8, and MySQL, this project ensures reliability, scalability, and performance for the authentication needs.
 
 
-
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
